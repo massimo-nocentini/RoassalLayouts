@@ -1,24 +1,14 @@
-"
-This trait defines methods to get information of a roassal shape like the gap, the width and height.
-It applies this properties for a horizontal tree layout.
-Check similarities with `RSTWalkBasedRegularVerticalTreeLayout`
-"
 Trait {
 	#name : 'RSTWalkBasedRegularHorizontalTreeLayout',
-	#traits : 'RSTGapsHolder',
-	#classTraits : 'RSTGapsHolder classTrait',
-	#category : 'Roassal-Layouts-Traits',
+	#category : 'Roassal-Layouts-Core',
 	#package : 'Roassal-Layouts',
-	#tag : 'Traits'
+	#tag : 'Core'
 }
 
 { #category : 'positioning' }
 RSTWalkBasedRegularHorizontalTreeLayout >> breadthGapAmong: aShapeParent and: aShape [
 
-	^ self
-		  verticalGapAmong: aShapeParent
-		  and: aShape
-		  default: RSAbstractGraphLayout horizontalGap
+	^ self verticalGapAmong: aShapeParent and: aShape
 ]
 
 { #category : 'positioning' }
@@ -30,10 +20,7 @@ RSTWalkBasedRegularHorizontalTreeLayout >> breadthMeasureOf: aShape [
 { #category : 'positioning' }
 RSTWalkBasedRegularHorizontalTreeLayout >> depthGapAmong: aShapeParent and: aShape [
 
-	^ self
-		  horizontalGapAmong: aShapeParent
-		  and: aShape
-		  default: RSAbstractGraphLayout verticalGap
+	^ self horizontalGapAmongParent: aShapeParent andChild: aShape
 ]
 
 { #category : 'positioning' }
@@ -42,10 +29,28 @@ RSTWalkBasedRegularHorizontalTreeLayout >> depthMeasureOf: aShape [
 	^ aShape width
 ]
 
+{ #category : 'accessing' }
+RSTWalkBasedRegularHorizontalTreeLayout >> horizontalGapAmongParent: aShapeParent andChild: aShape [
+
+	self explicitRequirement
+]
+
 { #category : 'positioning' }
 RSTWalkBasedRegularHorizontalTreeLayout >> positionOfShape: aShape atDepth: depth atBreadth: breadth [
 
 	| shift |
 	shift := aShape extent / 2.
 	^ depth @ breadth + shift
+]
+
+{ #category : 'positioning' }
+RSTWalkBasedRegularHorizontalTreeLayout >> updateDepthBreakingIndexOfParent: aShape at: position amongChild: aChild at: childPosition [
+
+	^ (position y > childPosition y) asBit
+]
+
+{ #category : 'accessing' }
+RSTWalkBasedRegularHorizontalTreeLayout >> verticalGapAmong: aShapeParent and: aShape [
+
+	self explicitRequirement
 ]

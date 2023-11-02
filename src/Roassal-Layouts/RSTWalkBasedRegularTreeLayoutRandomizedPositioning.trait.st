@@ -18,21 +18,3 @@ RSTWalkBasedRegularTreeLayoutRandomizedPositioning >> positionOfShape: aShape at
 	^ (self rawPositionOfShape: aShape atDepth: depth atBreadth: breadth)
 	  + (self random next asPoint * goldenRatio)
 ]
-
-{ #category : 'accessing' }
-RSTWalkBasedRegularTreeLayoutRandomizedPositioning >> random [
-
-	^ random ifNil: [ random := Random new ]
-]
-
-{ #category : 'accessing' }
-RSTWalkBasedRegularTreeLayoutRandomizedPositioning >> random: aRandom [
-
-	random := aRandom
-]
-
-{ #category : 'positioning' }
-RSTWalkBasedRegularTreeLayoutRandomizedPositioning >> rawPositionOfShape: aShape atDepth: depth atBreadth: breadth [
-
-	self explicitRequirement
-]
