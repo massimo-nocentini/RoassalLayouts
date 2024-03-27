@@ -15,10 +15,7 @@ Trait {
 { #category : 'positioning' }
 RSTWalkBasedRegularHorizontalTreeLayout >> breadthGapAmong: aShapeParent and: aShape [
 
-	^ self
-		  verticalGapAmong: aShapeParent
-		  and: aShape
-		  default: RSAbstractGraphLayout horizontalGap
+	^ self verticalGapAmong: aShapeParent and: aShape
 ]
 
 { #category : 'positioning' }
@@ -30,10 +27,7 @@ RSTWalkBasedRegularHorizontalTreeLayout >> breadthMeasureOf: aShape [
 { #category : 'positioning' }
 RSTWalkBasedRegularHorizontalTreeLayout >> depthGapAmong: aShapeParent and: aShape [
 
-	^ self
-		  horizontalGapAmong: aShapeParent
-		  and: aShape
-		  default: RSAbstractGraphLayout verticalGap
+	^ self horizontalGapAmongParent: aShapeParent andChild: aShape
 ]
 
 { #category : 'positioning' }
@@ -43,9 +37,27 @@ RSTWalkBasedRegularHorizontalTreeLayout >> depthMeasureOf: aShape [
 ]
 
 { #category : 'positioning' }
+RSTWalkBasedRegularHorizontalTreeLayout >> horizontalGapAmongParent: aShapeParent andChild: aShape [
+
+	self explicitRequirement
+]
+
+{ #category : 'positioning' }
 RSTWalkBasedRegularHorizontalTreeLayout >> positionOfShape: aShape atDepth: depth atBreadth: breadth [
 
 	| shift |
 	shift := aShape extent / 2.
 	^ depth @ breadth + shift
+]
+
+{ #category : 'positioning' }
+RSTWalkBasedRegularHorizontalTreeLayout >> updateDepthBreakingIndexOfParent: aShape at: position amongChild: aChild at: childPosition [
+
+	^ (position y > childPosition y) asBit
+]
+
+{ #category : 'positioning' }
+RSTWalkBasedRegularHorizontalTreeLayout >> verticalGapAmong: aShapeParent and: aShape [
+
+	self explicitRequirement
 ]

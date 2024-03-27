@@ -9,6 +9,19 @@ Trait {
 }
 
 { #category : 'properties' }
+RSTWalkBasedRegularTreeLayoutOnShapeProperties >> breakingDepthIndexOf: aShape [
+	"properties"
+
+	^ aShape propertyAt: #breakingDepthIndex
+]
+
+{ #category : 'properties' }
+RSTWalkBasedRegularTreeLayoutOnShapeProperties >> breakingDepthIndexOf: aShape put: aNumber [
+
+	^ aShape propertyAt: #breakingDepthIndex put: aNumber
+]
+
+{ #category : 'properties' }
 RSTWalkBasedRegularTreeLayoutOnShapeProperties >> changeOf: aNode [
 
 	^ aNode propertyAt: #change
@@ -18,6 +31,19 @@ RSTWalkBasedRegularTreeLayoutOnShapeProperties >> changeOf: aNode [
 RSTWalkBasedRegularTreeLayoutOnShapeProperties >> changeOf: aNode put: aFloat [
 
 	^ aNode propertyAt: #change put: aFloat
+]
+
+{ #category : 'properties' }
+RSTWalkBasedRegularTreeLayoutOnShapeProperties >> childIndexOf: aShape [
+	"properties"
+
+	^ aShape propertyAt: #childIndex
+]
+
+{ #category : 'properties' }
+RSTWalkBasedRegularTreeLayoutOnShapeProperties >> childIndexOf: aShape put: anInteger [
+
+	^ aShape propertyAt: #childIndex put: anInteger
 ]
 
 { #category : 'properties' }
@@ -156,6 +182,19 @@ RSTWalkBasedRegularTreeLayoutOnShapeProperties >> shiftOf: aNode [
 RSTWalkBasedRegularTreeLayoutOnShapeProperties >> shiftOf: aNode put: aFloat [
 
 	^ aNode propertyAt: #shift put: aFloat
+]
+
+{ #category : 'properties' }
+RSTWalkBasedRegularTreeLayoutOnShapeProperties >> siblingsOf: aShape [
+	"properties"
+
+	^ aShape propertyAt: #siblings
+]
+
+{ #category : 'properties' }
+RSTWalkBasedRegularTreeLayoutOnShapeProperties >> siblingsOf: aShape put: aCollection [
+
+	^ aShape propertyAt: #siblings put: aCollection
 ]
 
 { #category : 'properties' }

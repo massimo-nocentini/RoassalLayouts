@@ -21,14 +21,36 @@ Class {
 
 { #category : 'hook' }
 RSHorizontalVanDerPloegTreeLayout >> doInitialize: elements [
+	"hook"
 
 	super doInitialize: elements.
 
-	root := self initialize: elements lineEdges: self edges
+	root := self
+		        initialize: elements
+		        lines: self edges
+		        ifMultipleRoots: [ :roots | RSComposite new ]
+]
+
+{ #category : 'positioning' }
+RSHorizontalVanDerPloegTreeLayout >> horizontalGapAmongParent: aShapeParent andChild: aShape [
+
+	^ self horizontalGap
 ]
 
 { #category : 'private - hook' }
 RSHorizontalVanDerPloegTreeLayout >> layout: rootNodes atPoint: aPoint atLayer: aLayer [
 
 	^ self layout: root depth: aPoint x breadth: aPoint y
+]
+
+{ #category : 'positioning' }
+RSHorizontalVanDerPloegTreeLayout >> ongoing: aShape depth: aDepth breadth: aBreadth [
+
+	
+]
+
+{ #category : 'positioning' }
+RSHorizontalVanDerPloegTreeLayout >> verticalGapAmong: aShapeParent and: aShape [
+
+	^ self verticalGap
 ]
